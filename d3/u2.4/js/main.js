@@ -11,3 +11,14 @@ let circle = svg.append("circle")
     .attr("cy", 250)
     .attr("r", 70)
     .attr("fill", "black");
+
+let smSvg = d3.select("#newCanvas").append("svg")
+    .attr("width", 500)
+    .attr("height", 400);
+
+let rect = svg.append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("fill", "blue");
