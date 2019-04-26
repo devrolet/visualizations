@@ -17,10 +17,10 @@ d3.json("../data/buildings.json").then((data) => {
     });
 
     var x = d3.scaleBand()
-        .domain(["Burj Khalifa", "Shanghai Tower",
-                "Abraj Al-Bait Clock Tower", "Ping An Finance Centre",
-                "Lotte World Tower", 
-                "One World Trade Center", "Guangzhou CTF Finance Center"])
+        // Use Map method to loop thru the names
+        .domain(data.map((d) => {
+            return d.name;
+        }))
         .range([0, 400])
         .paddingInner(0.3)
         .paddingOuter(0.3);
@@ -28,7 +28,9 @@ d3.json("../data/buildings.json").then((data) => {
     console.log(x("Burg Khalifa"))
 
     var y = d3.scaleLinear()
-        .domain([0, 828])
+        .domain([0, d3.max(data, (d) => {
+            return d.height;
+        })])
         .range([0, 400]);
 
     var rects = svg.selectAll("rect")
