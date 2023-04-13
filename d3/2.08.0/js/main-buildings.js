@@ -21,8 +21,9 @@ d3.json("data/buildings.json", (data) => {
         .range([0, 400]);
 
     var rects = svg.selectAll("rect")
-        .data(data)
-        .enter()
+        .data(data);
+
+    rects.enter()
         .append("rect")
         .attr("y", 20)
         .attr("x", (d, i) => {

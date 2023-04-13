@@ -6,9 +6,10 @@ d3.json('data/ages.json').then((data) => {
         d.age = +d.age;
     });
 
-    let svg = d3.select("#chart-area").append("svg")
-        .attr("width", 1200)
-        .attr("height", 1200);
+    const svg = d3.select("#chart-area")
+        .append("svg")
+            .attr("width", 1200)
+            .attr("height", 1200);
 
     var circles = svg.selectAll('circle')
         .data(data);
@@ -23,12 +24,25 @@ d3.json('data/ages.json').then((data) => {
                 return d.age;
             })
             .attr('fill', (d) => {
-                if(d.name === "Chet"){
+                if(d.name === "Cassie"){
                     return "red";
                 } else {
                     return "blue";
                 }
+            })
+            .attr('fill', (d) => {
+                if(d.age >= 40) {
+                    return "grey";
+                } else {
+                    return "blue";
+                }
             });
+
+    // let rectangles = svg.select('rect').append('rect');
+
+    // rectangles.enter()
+    //     .append('rect')
+    //         .attr()
 
 }).catch((error) => {
     console.log(error);
